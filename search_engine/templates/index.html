@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="ja">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <title>Python</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Search Engine</h1>
+
+        <form method="post" action="{{url_for('index')}}">
+            <div class="row">
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" name="keyword" placeholder="type sth">
+                </div>
+                <div class="col-xs-2">
+                    <input type="submit" class="btn btn-md btn-block btn-primary" value="search">
+                </div>
+            </div>
+        </form>
+
+        <br>
+        {% if is_profane %}
+            <h3>shh</h3>
+            <div class="tenor-gif-embed" data-postid="10574675" data-share-method="host" data-width="50%" data-aspect-ratio="1.0"><a href="https://tenor.com/view/innocent-pea-angel-gif-10574675">Innocent Pea GIF</a> from <a href="https://tenor.com/search/innocent-gifs">Innocent GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        {% else %}
+
+            {% if keyword %}
+            <h3>{{keyword}}</h3>
+            <ul>
+                {% for url in query %}
+                <li><a href="{{url}}">{{url}}</a></li>
+                {% else %}
+                <p>nothing found</p>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>search results</p>
+            {% endif %}
+        {% endif %}
+    </div>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>
